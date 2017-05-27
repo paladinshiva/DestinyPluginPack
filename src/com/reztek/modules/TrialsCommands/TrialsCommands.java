@@ -33,7 +33,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class TrialsCommands extends CommandModule {
 	
 	public static final String PLUGIN_ID = "TRIALSCOMMANDS";
-	public static final String PLUGIN_VER = "1.0";
+	public static final String PLUGIN_VER = "1.1";
 	
 	private static final String DTR_MAP_URL = "https://api.destinytrialsreport.com/currentMap";
 	private static final String BUNGIE_BASE = "https://www.bungie.net";
@@ -226,7 +226,7 @@ public class TrialsCommands extends CommandModule {
 	protected void trialListCSV(MessageReceivedEvent mre) {
 		mre.getChannel().sendMessage("On it " + mre.getAuthor().getAsMention() + ", lets take this to a private chat!").queue();
 		try {
-			p_trialsList.sendListCSV(mre.getAuthor().hasPrivateChannel() ? mre.getAuthor().getPrivateChannel() : mre.getAuthor().openPrivateChannel().submit().get());
+			p_trialsList.sendListCSV(mre.getAuthor().openPrivateChannel().submit().get());
 		} catch (InterruptedException | ExecutionException e) {
 			mre.getChannel().sendMessage("Hmm... " + mre.getAuthor().getAsMention() + ", I tried to open a private chat with you but I was denied.").queue();
 		}

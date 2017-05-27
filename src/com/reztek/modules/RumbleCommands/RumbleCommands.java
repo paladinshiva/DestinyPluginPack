@@ -27,7 +27,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class RumbleCommands extends CommandModule {
 	
 	public static final String PLUGIN_ID = "RUMBLECOMMANDS";
-	public static final String PLUGIN_VER = "1.0";
+	public static final String PLUGIN_VER = "1.1";
 	
 	protected RumbleList p_rumbleList = null;
 	
@@ -158,7 +158,7 @@ public class RumbleCommands extends CommandModule {
 	protected void rumbleListCSV(MessageReceivedEvent mre) {
 		mre.getChannel().sendMessage("On it " + mre.getAuthor().getAsMention() + ", lets take this to a private chat!").queue();
 		try {
-			p_rumbleList.sendListCSV(mre.getAuthor().hasPrivateChannel() ? mre.getAuthor().getPrivateChannel() : mre.getAuthor().openPrivateChannel().submit().get());
+			p_rumbleList.sendListCSV(mre.getAuthor().openPrivateChannel().submit().get());
 		} catch (InterruptedException | ExecutionException e) {
 			mre.getChannel().sendMessage("Hmm... " + mre.getAuthor().getAsMention() + ", I tried to open a private chat with you but I was denied.").queue();
 		}
