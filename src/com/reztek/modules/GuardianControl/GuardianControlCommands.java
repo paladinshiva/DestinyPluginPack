@@ -18,7 +18,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class GuardianControlCommands extends CommandModule {
 	
 	public static final String PLUGIN_ID  = "GUARDIANCOMMANDS";
-	public static final String PLUGIN_VER = "1.0";
+	public static final String PLUGIN_VER = "1.1";
 	
 	public static final int LOADOUT_ALL = 0;
 	public static final int LOADOUT_PRIMARY_ONLY = 1;
@@ -245,7 +245,7 @@ public class GuardianControlCommands extends CommandModule {
 		AuthenticatedGuardian ag = AuthenticatedGuardian.AuthenticatedGuardianFromNameAndPlatform(playerName, platform);
 		PrivateChannel pc;
 		try {
-			pc = mre.getAuthor().hasPrivateChannel() ? mre.getAuthor().getPrivateChannel() : mre.getAuthor().openPrivateChannel().submit().get();
+			pc = mre.getAuthor().openPrivateChannel().submit().get();
 			if (ag == null) {
 				pc.sendMessage("Hey " + mre.getAuthor().getAsMention() + ", You need to allow us permission - Follow this link\n" + AuthenticatedGuardian.BUNGIE_APP_AUTH).queue();
 			} else {
