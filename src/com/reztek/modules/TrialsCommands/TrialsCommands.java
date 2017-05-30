@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import com.reztek.SGAExtendedBot;
+import com.reztek.JDBExtendedBot;
 import com.reztek.Base.CommandModule;
 import com.reztek.Global.GlobalDefs;
 import com.reztek.Utils.BotUtils;
@@ -33,7 +33,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class TrialsCommands extends CommandModule {
 	
 	public static final String PLUGIN_ID = "TRIALSCOMMANDS";
-	public static final String PLUGIN_VER = "1.1";
+	public static final String PLUGIN_VER = "1.2";
 	
 	private static final String DTR_MAP_URL = "https://api.destinytrialsreport.com/currentMap";
 	private static final String BUNGIE_BASE = "https://www.bungie.net";
@@ -67,7 +67,7 @@ public class TrialsCommands extends CommandModule {
 		});
 		setModuleNameAndAuthor("Trials of Osiris", "ChaseHQ85");
 		p_trialsList.setTaskDelay(100);
-		SGAExtendedBot.GetBot().addTask(p_trialsList);
+		JDBExtendedBot.GetBot().addTask(p_trialsList);
 	}
 
 	@Override
@@ -184,7 +184,7 @@ public class TrialsCommands extends CommandModule {
 			if (mre.getMessage().getAttachments().get(0).getFileName().split("\\.")[1].equalsIgnoreCase("csv")) {
 				// its a csv :)
 				String tmpName = String.valueOf(System.currentTimeMillis()) + "-" + mre.getAuthor().getName() + "-tmp.tmp";
-				File csvFile = new File((GlobalDefs.BOT_DEV ? GlobalDefs.DEV_TMP_LOCATION : GlobalDefs.TMP_LOCATION) + tmpName);
+				File csvFile = new File(GlobalDefs.TMP_LOCATION + tmpName);
 				try {
 					csvFile.deleteOnExit();
 					mre.getMessage().getAttachments().get(0).download(csvFile);

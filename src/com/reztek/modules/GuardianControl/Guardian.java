@@ -23,7 +23,7 @@ public class Guardian {
 	public static final String PLATFORM_PS = "2";
 	public static final String PLATFORM_ALL = "All";
 	
-	protected static final String BUNGIE_API_KEY        = ConfigReader.GetConfigReader().getConfigString("BUNGIE_API_KEY");
+	protected static final String BUNGIE_API_KEY        = ConfigReader.GetConfigReader().getOrCreateConfigString("BUNGIE_API_KEY", "INSERT_BUNGIE_API_KEY_HERE");
 	private static final String   BUNGIE_BASE_URL       = "https://www.bungie.net/Platform/Destiny";
 	private static final String   BUNGIE_SEARCH_URL     = "/SearchDestinyPlayer/";
 	private static final String   BUNGIE_ACCOUNT_URL    = "/Account/";
