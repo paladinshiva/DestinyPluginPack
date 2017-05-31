@@ -12,7 +12,7 @@ import com.reztek.Utils.ConfigReader;
 import com.reztek.Utils.MySQLConnector;
 
 public class AuthenticatedGuardian extends Guardian {
-	public static final String  BUNGIE_APP_AUTH    = ConfigReader.GetConfigReader().getConfigString("BUNGIE_APP_AUTH");
+	public static final String  BUNGIE_APP_AUTH    = ConfigReader.GetConfigReader().getOrCreateConfigString("BUNGIE_APP_AUTH", "INSERT_BUNGIE_APP_AUTH_URL");
 	private static final String BUNGIE_API_REFRESH = "https://www.bungie.net/Platform/App/GetAccessTokensFromRefreshToken/";
 	private static final int    EXPIRE_TIME_ADJUST = 300000;
 	

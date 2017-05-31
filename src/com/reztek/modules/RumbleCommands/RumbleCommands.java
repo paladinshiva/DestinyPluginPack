@@ -14,7 +14,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import com.reztek.SGAExtendedBot;
+import com.reztek.JDBExtendedBot;
 import com.reztek.Base.CommandModule;
 import com.reztek.Global.GlobalDefs;
 import com.reztek.modules.GuardianControl.Guardian;
@@ -27,7 +27,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class RumbleCommands extends CommandModule {
 	
 	public static final String PLUGIN_ID = "RUMBLECOMMANDS";
-	public static final String PLUGIN_VER = "1.1";
+	public static final String PLUGIN_VER = "1.2";
 	
 	protected RumbleList p_rumbleList = null;
 	
@@ -51,7 +51,7 @@ public class RumbleCommands extends CommandModule {
 		p_rumbleList = new RumbleList();
 		p_rumbleList.setTaskName("RumbleList Refresh");
 		p_rumbleList.setTaskDelay(90);
-		SGAExtendedBot.GetBot().addTask(p_rumbleList);
+		JDBExtendedBot.GetBot().addTask(p_rumbleList);
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class RumbleCommands extends CommandModule {
 			if (mre.getMessage().getAttachments().get(0).getFileName().split("\\.")[1].equalsIgnoreCase("csv")) {
 				// its a csv :)
 				String tmpName = String.valueOf(System.currentTimeMillis()) + "-" + mre.getAuthor().getName() + "-tmp.tmp";
-				File csvFile = new File((GlobalDefs.BOT_DEV ? GlobalDefs.DEV_TMP_LOCATION : GlobalDefs.TMP_LOCATION) + tmpName);
+				File csvFile = new File(GlobalDefs.TMP_LOCATION + tmpName);
 				try {
 					csvFile.deleteOnExit();
 					mre.getMessage().getAttachments().get(0).download(csvFile);

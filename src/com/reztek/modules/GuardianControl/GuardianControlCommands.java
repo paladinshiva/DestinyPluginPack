@@ -18,7 +18,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class GuardianControlCommands extends CommandModule {
 	
 	public static final String PLUGIN_ID  = "GUARDIANCOMMANDS";
-	public static final String PLUGIN_VER = "1.1";
+	public static final String PLUGIN_VER = "1.2";
 	
 	public static final int LOADOUT_ALL = 0;
 	public static final int LOADOUT_PRIMARY_ONLY = 1;
