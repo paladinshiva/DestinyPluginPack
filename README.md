@@ -9,6 +9,11 @@ Upon using any command for the first time the following will be added to your BO
 
 It is recommended that you add this to your BotConfig file before doing anything else
 
+#Important Information
+**To Use any of the List commands, you will need to have a MySQL Server set up in Botconfig**
+**To Use any of the Image Badges, you will need to have a WebServer set up in Botconfig**
+
+#Commands
 **Current Plugin Commands as of Version 1.2** 
 
 All commands begin with an '!'
