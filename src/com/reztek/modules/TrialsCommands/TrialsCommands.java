@@ -33,7 +33,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class TrialsCommands extends CommandModule {
 	
 	public static final String PLUGIN_ID = "TRIALSCOMMANDS";
-	public static final String PLUGIN_VER = "1.2";
+	public static final String PLUGIN_VER = "1.3";
 	
 	private static final String DTR_MAP_URL = "https://api.destinytrialsreport.com/currentMap";
 	private static final String BUNGIE_BASE = "https://www.bungie.net";
@@ -268,6 +268,7 @@ public class TrialsCommands extends CommandModule {
 			TrialsDetailedBadge tb = TrialsDetailedBadge.TrialsDetailedBadgeFromGuardian(g);
 			EmbedBuilder em = new EmbedBuilder();
 			em.setImage(tb.finalizeBadge());
+			em.setFooter("Data from DestinyTrialsReport.com", "https://destinytrialsreport.com/favicon-32x32.png");
 			mc.sendMessage(em.build()).queue();
 			tb.cleanup();
 		} catch (IOException e) {}
@@ -316,11 +317,13 @@ public class TrialsCommands extends CommandModule {
 				em.setImage(gb.finalizeBadge());
 				mc.sendMessage(em.build()).queue();
 				gb.cleanup();
-				for (Guardian gFt : gFireteam) {
+				for (int x = 0; x < gFireteam.size(); ++x) {
 					EmbedBuilder eFt = new EmbedBuilder();
 					eFt.setColor(Color.YELLOW);
-					TrialsDetailedBadge ftb = TrialsDetailedBadge.TrialsDetailedBadgeFromGuardian(gFt);
+					TrialsDetailedBadge ftb = TrialsDetailedBadge.TrialsDetailedBadgeFromGuardian(gFireteam.get(x));
 					eFt.setImage(ftb.finalizeBadge());
+					if ((x + 1) == gFireteam.size())
+						eFt.setFooter("Data from DestinyTrialsReport.com", "https://destinytrialsreport.com/favicon-32x32.png");
 					mc.sendMessage(eFt.build()).queue();
 					ftb.cleanup();
 				}
